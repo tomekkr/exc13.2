@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 class ComputerStoreService {
@@ -17,6 +16,10 @@ class ComputerStoreService {
         computers.add(new Computer("Komputer B", 3200, 8192));
         computers.add(new Computer("Komputer B", 2800, 16384));
         computers.add(new Computer("Komputer C", 2800, 16384));
+        computers.add(new Computer("Komputer C", 2800));
+        computers.add(new Computer(null, 3100, 4096));
+        computers.add(new Computer("Komputer B"));
+        computers.add(null);
         return computers;
     }
 
@@ -27,7 +30,7 @@ class ComputerStoreService {
 
     public static void sortByOptionSelected(List<Computer> computers, int option) {
         switch (option) {
-            case SORT_BY_NAME -> Collections.sort(computers);
+            case SORT_BY_NAME -> computers.sort(new NameComparator());
             case SORT_BY_CPU_SPEED -> computers.sort(new CpuSpeedComparator());
             case SORT_BY_MEMORY_SIZE -> computers.sort(new MemorySizeComparator());
             default -> throw new IncorrectOptionNumber("Wybrano nieprawidłowy numer opcji");

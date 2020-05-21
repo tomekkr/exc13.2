@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Computer implements Comparable<Computer> {
+public class Computer {
     private String name;
     private int cpuSpeed;
     private int memorySize;
@@ -9,6 +9,22 @@ public class Computer implements Comparable<Computer> {
         this.name = name;
         this.cpuSpeed = speed;
         this.memorySize = memory;
+    }
+
+    public Computer(String name, int speed) {
+        this.name = name;
+        this.cpuSpeed = speed;
+    }
+
+    public Computer(String name) {
+        this.name = name;
+    }
+
+    public Computer() {
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCpuSpeed() {
@@ -37,15 +53,6 @@ public class Computer implements Comparable<Computer> {
     @Override
     public String toString() {
         return name + " (procesor: " + cpuSpeed + ", pamięć RAM: " + memorySize + ")";
-    }
-
-    @Override
-    public int compareTo(Computer c) {
-        if (this.name != null && c.name == null)
-            return -1;
-        if (this.name == null && c.name != null)
-            return 1;
-        return Integer.compare(this.name.compareTo(c.name), 0);
     }
 }
 
